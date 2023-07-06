@@ -1,4 +1,4 @@
-package com.mylb.spring.test.test02;
+package com.mylb.spring.test.lifecycle;
 
 public class Post {
 	

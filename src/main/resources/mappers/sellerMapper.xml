@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.mylb.spring.test.jsp.repository.SellerRepository">
+	
+	<insert id="insertSeller" parameterType="map">
+		INSERT INTO
+			`seller`
+		(
+			`nickname`
+			, `profileImageUrl`
+			, `temperature`
+		)
+		VALUE
+		(
+			#{nickname}
+			, #{profileImg}
+			, #{temperature}
+		)
+	</insert>
+	
+	<select id="selectLastSeller" resultType="com.mylb.spring.test.jsp.domain.Seller">
+		SELECT
+			`id`
+			, `nickname`
+			, `profileImageUrl`
+			, `temperature`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`seller`
+		ORDER BY
+			`id` DESC
+		LIMIT
+			1
+	</select>
+	
+	<select id="selectSeller" parameterType="int"
+	resultType="com.mylb.spring.test.jsp.domain.Seller">
+		SELECT
+			`id`
+			, `nickname`
+			, `profileImageUrl`
+			, `temperature`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`seller`
+		WHERE
+			`id` = #{id}
+	</select>
+</mapper>  

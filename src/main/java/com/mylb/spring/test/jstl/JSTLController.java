@@ -170,6 +170,11 @@ public class JSTLController {
 		
 	}
 	
+	@GetMapping("/test05")
+	public String test05() {
+		return "jstl/weather/list";
+	}
+	
 	
 
 }

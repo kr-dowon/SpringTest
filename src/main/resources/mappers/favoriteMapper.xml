@@ -7,16 +7,20 @@
 <mapper namespace="com.mylb.spring.test.ajax.repository.FavoriteRepository">
 
 	<select id="selectFavoriteList" resultType="com.mylb.spring.test.ajax.domain.Favorite">
-		SELECT
+	
+		SELECT 
 			`id`
 			, `name`
 			, `url`
+			, `createdAt`
+			, `updatedAt`
 		FROM
 			`favorite`
+	
 	</select>
-
+	
 	<insert id="insertFavorite" parameterType="map">
-		INSERT INTO
+		INSERT INTO 
 			`favorite`
 		(
 			`name`
@@ -27,6 +31,25 @@
 			#{name}
 			, #{url}
 		)
+		
 	
 	</insert>
-</mapper>  
+	
+	<select id="selectCountUrl" parameterType="string" resultType="int">
+		SELECT 
+			count(1)
+		FROM 
+			`favorite`
+		WHERE 
+			`url` = #{url}
+	
+	</select>
+	
+	<delete id="deleteFavorite" parameterType="int">
+		DELETE FROM
+			`favorite`
+		WHERE
+			`id` = #{id}
+	</delete>
+
+</mapper>
